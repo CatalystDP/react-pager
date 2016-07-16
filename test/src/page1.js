@@ -11,8 +11,7 @@ let Page1 = React.createClass({
     render(){
         let style={}
         return (
-            <div className="no-flicker pager-slide" style={{width:'100%',height:'100%',
-            position:'absolute',background:'#efeff4',top:'0',left:'0'}}>
+            <div className="no-flicker" style={{width:'100%',height:'100%',background:'#efeff4'}}>
                 <button onClick={this.changePage}>page2</button>
                 page1
                 <div style={{width:'80%',height:'50%',background:'red'}}></div>

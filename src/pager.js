@@ -53,17 +53,17 @@ let util = {
 /**
  *
  * @type {{INIT: number, TONEW: number, TOOLD: number}}
- * 0 means init 
+ * 0 means init
  */
 const DIRECTION = {
     INIT: 0,
     TONEW: -1,
     TOOLD: 1
 };
-class PagerError extends Error{
-    constructor(message){
+class PagerError extends Error {
+    constructor(message) {
         super(message);
-        this.name='PagerError';
+        this.name = 'PagerError';
     }
 }
 
@@ -87,7 +87,7 @@ class PagerError extends Error{
  * @returns {*}
  */
 function createPager(opts = {}) {
-    if(opts.animation && !opts.transitionGroup){
+    if (opts.animation && !opts.transitionGroup) {
         throw new PagerError('you should provide ReactTransitionGroup to transitionGroup option');
     }
     let TransitionGroup = opts.transitionGroup;
@@ -98,7 +98,8 @@ function createPager(opts = {}) {
     let direction = 0;
     let Container = React.createClass({
         name: 'Container',
-        componentWillMount(){},
+        componentWillMount(){
+        },
         componentDidMount(){
             let page = this.props.page;
             this.el = ReactDOM.findDOMNode(this);
@@ -127,7 +128,7 @@ function createPager(opts = {}) {
             util.isFunction(animationObj.leave) ? animationObj.leave(this.el, direction, done, page) : done();
         },
         render(){
-            return <div style={this.props.style}>{this.props.children}</div>;
+            return <div style={this.props.style} className={this.props.className}>{this.props.children}</div>;
         }
     });
     let Pager = React.createClass({
@@ -178,7 +179,7 @@ function createPager(opts = {}) {
                 util.extend(style, this.props.style);
             }
             let child = <Container key={this.state.page||this.props.page} page={this.state.page||this.props.page}
-                                   style={style}>
+                                   style={style} className={opts.css.transition||''}>
                 {Component}
             </Container>;
             if (opts.enableAnimation) {
@@ -193,16 +194,13 @@ function createPager(opts = {}) {
                     }
                     return <CssTransitionGroup component="div" transitionName={className}
                                                transitionEnterTimeout={duration} transitionLeaveTimeout={duration}>
-                        {React.cloneElement(Component, {
-                            key: this.state.page || this.props.page,
-                            style: style
-                        })}
+                        {child}
                     </CssTransitionGroup>
                 } else if (TransitionGroup) {
                     return (<TransitionGroup component='div' style={style}>
                         {child}
                     </TransitionGroup>);
-                }else{
+                } else {
                     return Component;
                 }
             } else {

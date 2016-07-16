@@ -19,6 +19,7 @@ if (!ENV.DEBUG) {
 let config = {
     entry: {
         pager: path.join(JSPATH, 'pager.js'),
+        'pager.min':path.join(JSPATH,'pager.js')
     },
     output: {
         path: './dist',
@@ -29,9 +30,9 @@ let config = {
     },
     externals:[
         {
-            react:'commonjs react',
-            'react-dom':'commonjs react-dom',
-            'ReactTransitionGroup':'commonjs ReactTransitionGroup'
+            react:'react',
+            'react-dom':'react-dom',
+            'ReactTransitionGroup':'ReactTransitionGroup'
         }
     ],
     plugins:[],
@@ -59,7 +60,9 @@ if (ENV.DEBUG) {
             }
         }));
     config.plugins.push(new webpack.optimize.UglifyJsPlugin({
-        mangle: true
+        include:/\.min\.js$/,
+        mangle: true,
+        minimize:true
     }));
 }
 module.exports = config;
