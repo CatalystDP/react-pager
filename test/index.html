@@ -3,175 +3,136 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <!--<meta name="apple-mobile-web-app-status-bar-style" content="black">-->
+    <!--<meta name="apple-mobile-web-app-capable" content="yes">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="./pager-slide.css">
     <style>
-        * {
-            /*-webkit-tap-highlight-color: rgba(0, 0, 0, 0);*/
-        }
 
+        *{
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+            -webkit-touch-callout: none;
+        }
         body {
-            /*-webkit-transform:translate3d(0,0,0);*/
         }
 
-        .pager-slide {
-            -webkit-transform: translateZ(0);
-            transform: translateZ(0);
-            -webkit-animation-duration: 300ms;
-            -webkit-animation-iteration-count: 1;
-            -webkit-animation-timing-function: linear;
-            -webkit-animation-fill-mode: forwards;
-        }
-        @-webkit-keyframes page-sfr-enter {
-            from {
-                -webkit-transform: translate3d(100%, 0, 0);
-            }
-            to {
-                -webkit-transform: translate3d(0, 0, 0);
-            }
-        }
-       @keyframes page-sfr-enter {
+        /*@keyframes page-sfr-enter {*/
 
-        from {
-            transform: translate3d(100%, 0, 0);
-        }
+            /*from {*/
+                /*margin-left: 100%;*/
+            /*}*/
+            /*to {*/
+                /*margin-left: 0;*/
+            /*}*/
+        /*}*/
 
-        to {
-            transform: translate3d(0, 0, 0);
-        }
+        /*@-webkit-keyframes page-sfr-enter {*/
+            /*from {*/
+                /*margin-left: 100%;*/
+            /*}*/
+            /*to {*/
+                /*margin-left: 0;*/
+            /*}*/
+        /*}*/
 
-        }
+        /*@keyframes page-sfr-leave {*/
+            /*to {*/
+                /*opacity: .9;*/
+                /*margin-left: -20%;*/
+            /*}*/
+        /*}*/
 
+        /*@-webkit-keyframes page-sfr-leave {*/
+            /*to {*/
+                /*opacity: .9;*/
+                /*margin-left: -20%;*/
+            /*}*/
+        /*}*/
 
+        /*@keyframes page-rfr-enter {*/
+            /*from {*/
+                /*opacity: .9;*/
+                /*margin-left: -20%;*/
+            /*}*/
+            /*to {*/
+                /*opacity: 1;*/
+                /*margin-left: 0;*/
+            /*}*/
+        /*}*/
 
-        @keyframes page-sfr-leave {
-            to {
-                opacity: .9;
-                transform: translate3d(-20%, 0, 0);
-            }
-        }
+        /*@-webkit-keyframes page-rfr-enter {*/
+            /*from {*/
+                /*opacity: .9;*/
+                /*margin-left: -20%;*/
+            /*}*/
+            /*to {*/
+                /*opacity: 1;*/
+                /*margin-left: 0;*/
+            /*}*/
+        /*}*/
 
-        @-webkit-keyframes page-sfr-leave {
-            to {
-                opacity: .9;
-                -webkit-transform: translate3d(-20%, 0, 0);
-            }
-        }
+        /*@keyframes page-rfr-leave {*/
+            /*to {*/
+                /*opacity: 0.9;*/
+                /*margin-left: 100%;*/
+            /*}*/
+        /*}*/
 
-        @keyframes page-rfr-enter {
-            from {
-                opacity: .9;
-                transform: translate3d(-20%, 0, 0);
-            }
-            to {
-                opacity: 1;
-                transform: translate3d(0, 0, 0);
-            }
-        }
-
-        @-webkit-keyframes page-rfr-enter {
-            from {
-                opacity: .9;
-                -webkit-transform: translate3d(-20%, 0, 0);
-            }
-            to {
-                opacity: 1;
-                -webkit-transform: translate3d(0, 0, 0);
-            }
-        }
-
-        @keyframes page-rfr-leave {
-            to {
-                opacity: 0.9;
-                transform: translate3d(100%, 0, 0);
-            }
-        }
-
-        @-webkit-keyframes page-rfr-leave {
-            to {
-                opacity: 0.9;
-                -webkit-transform: translate3d(100%, 0, 0);
-            }
-        }
-
-        .pager-slide-enter {
-            z-index: 20;
-            pointer-events: none;
-        }
-
-        .pager-slide-enter-active {
-
-            -webkit-animation-name: page-sfr-enter
-        }
-
-        .pager-slide-reverse-enter {
-            pointer-events: none;
-        }
-
-        .pager-slide-reverse-enter-active {
-            z-index:10;
-           -webkit-animation-name: page-rfr-enter
-        }
-
-        .pager-slide-leave {
-            z-index:10;
-            pointer-events: none;
-        }
-
-        .pager-slide-leave-active {
-          -webkit-animation-name: page-sfr-leave
-        }
-
-        .pager-slide-reverse-leave {
-            z-index: 20;
-            pointer-events: none;
-
-        }
-
-        .pager-slide-reverse-leave-active {
-            -webkit-animation-name: page-rfr-leave
-        }
+        /*@-webkit-keyframes page-rfr-leave {*/
+            /*to {*/
+                /*opacity: 0.9;*/
+                /*margin-left: 100%;*/
+            /*}*/
+        /*}*/
 
         /*.pager-slide-enter {*/
-        /*z-index: 1;*/
+        /*z-index: 20;*/
         /*pointer-events: none;*/
-        /*-webkit-transform: translateX(100%);*/
-        /*transform: translateX(100%);*/
+        /*-webkit-transform: translate3d(100%,0,0);*/
+        /*transform: translate3d(100%,0,0);*/
         /*}*/
         /*.pager-slide-enter-active {*/
-        /*z-index: 1;*/
-        /*-webkit-transform: translateX(0);*/
-        /*transform: translateX(0);*/
-        /*}*/
-        /*.pager-slide-reverse-enter{*/
-        /*pointer-events: none;*/
-        /*-webkit-transform:translateX(-20%);*/
-        /*transform:translateX(-20%);*/
-        /*}*/
-        /*.pager-slide-reverse-enter-active{*/
-        /*-webkit-transform:translateX(0) ;*/
-        /*transform:translateX(0);*/
+        /*z-index: 20;*/
+        /*-webkit-transform: translate3d(0,0,0);*/
+        /*transform: translate3d(0,0,0);*/
         /*}*/
 
-        /*.pager-slide-leave{*/
+        /*.pager-slide-reverse-enter {*/
         /*pointer-events: none;*/
-        /*-webkit-transform: translateX(0) ;*/
-        /*transform: translateX(0) ;*/
+        /*-webkit-transform: translate3d(-100%,0,0);*/
+        /*transform: translate3d(-100%,0,0);*/
         /*}*/
-        /*.pager-slide-leave-active{*/
-        /*-webkit-transform: translateX(-20%);*/
-        /*transform: translateX(-20%) ;*/
+
+        /*.pager-slide-reverse-enter-active {*/
+        /*-webkit-transform: translate3d(0,0,0);*/
+        /*transform: translate3d(0,0,0);*/
         /*}*/
-        /*.pager-slide-reverse-leave{*/
+
+        /*.pager-slide-leave {*/
+        /*z-index: 10;*/
         /*pointer-events: none;*/
-        /*-webkit-transform: translateX(0);*/
-        /*transform: translateX(0);*/
+        /*-webkit-transform: translate3d(0,0,0);*/
+        /*transform: translate3d(0,0,0);*/
+        /*}*/
+
+        /*.pager-slide-leave-active {*/
+        /*z-index: 10;*/
+        /*-webkit-transform: translate3d(-100%,0,0);*/
+        /*transform: translate3d(-100%,0,0);*/
+        /*}*/
+
+        /*.pager-slide-reverse-leave {*/
+        /*pointer-events: none;*/
+        /*-webkit-transform: translate3d(0,0,0);*/
+        /*transform: translate3d(0,0,0);*/
 
         /*}*/
-        /*.pager-slide-reverse-leave-active{*/
-        /*-webkit-transform: translateX(100%);*/
-        /*transform: translateX(100%);*/
+
+        /*.pager-slide-reverse-leave-active {*/
+        /*-webkit-transform: translate3d(100%,0,0);*/
+        /*transform: translate3d(100%,0,0);*/
         /*}*/
     </style>
     <script>
@@ -190,7 +151,7 @@
 <section id="wrapper" style="width:100%;height:100%">
     <button id="page1">page1</button>
     <button id="page2">page2</button>
-    <div id="container" style="position: relative;width:100%;height: 94%;overflow: hidden"></div>
+    <div id="container" style="position: relative;width:100%;height: 94%;-webkit-overflow-scrolling: touch"></div>
 </section>
 <script src="./dist/vendor.js"></script>
 <script type="text/javascript" src="./dist/app.js"></script>

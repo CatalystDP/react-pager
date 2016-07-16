@@ -25,7 +25,8 @@ let config = {
         vendor:[
             REACT,
             REACTDOM,
-            path.join(REACTLIB,'ReactTransitionGroup.js')
+            path.join(REACTLIB,'ReactTransitionGroup.js'),
+            path.join(REACTLIB,'ReactCssTransitionGroup.js')
         ]
     },
     output: {
@@ -38,6 +39,7 @@ let config = {
             'react':REACT,
             'react-dom':REACTDOM,
             'ReactTransitionGroup':path.join(REACTLIB,'ReactTransitionGroup.js'),
+            'ReactCssTransitionGroup':path.join(REACTLIB,'ReactCssTransitionGroup.js'),
             'Pager':path.join(process.cwd(),'dist/pager.js')
         }
     },

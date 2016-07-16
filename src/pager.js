@@ -1,6 +1,5 @@
 let React = require('react');
 let ReactDOM = require('react-dom');
-let ReactTransitionGroup = require('ReactTransitionGroup');
 let util = {
     extend(target, ...args){
         for (let i = 0, len = args.length; i < len; ++i) {
@@ -242,16 +241,21 @@ class CssAnimation {
  * @returns {*}
  */
 function createPager(opts = {}) {
-    let animationObj = opts.animation || new CssAnimation({
-            transition: opts.transition,
-            enter: opts.enter,
-            reverseEnter: opts.reverseEnter,
-            leave: opts.leave,
-            reverseLeave: opts.reverseLeave,
-            duration: opts.duration,
-            removeActive: opts.removeActive,
-            useAnimation: opts.useAnimation
-        });
+    // let animationObj = opts.animation || new CssAnimation({
+    //         transition: opts.transition,
+    //         enter: opts.enter,
+    //         reverseEnter: opts.reverseEnter,
+    //         leave: opts.leave,
+    //         reverseLeave: opts.reverseLeave,
+    //         duration: opts.duration,
+    //         removeActive: opts.removeActive,
+    //         useAnimation: opts.useAnimation
+    //     });
+    let TransitionGroup=opts.TransitionGroup;
+    let CssTransitionGroup=opts.cssTransitionGroup;
+    let css=opts.css||{};
+    let animationObj=opts.animation||{};
+    let duration=typeof opts.duration!='undefined'? opts.duration:300;
     let direction = 0;
     let Container = React.createClass({
         name: 'Container',
@@ -341,11 +345,29 @@ function createPager(opts = {}) {
                 {React.cloneElement(Component)}
             </Container>;
             if (opts.enableAnimation) {
-                return (<ReactTransitionGroup component='div' style={style}>
-                    {child}
-                </ReactTransitionGroup>);
+                if(CssTransitionGroup){
+                    let className;
+                    if(direction==DIRECTION.TONEW){
+                        className=css.forward;
+                    }else if(direction==DIRECTION.TOOLD){
+                        className=css.backward;
+                    }else{
+                        className='';
+                    }
+                    return <CssTransitionGroup  component="div" transitionName={className} transitionEnterTimeout={duration} transitionLeaveTimeout={duration}>
+                        {React.cloneElement(Component,{
+                            key:this.state.page||this.props.page,
+                            style:style
+                        })}
+                    </CssTransitionGroup>
+                }
+                // return (<ReactTransitionGroup component='div' style={style}>
+                //     {child}
+                // </ReactTransitionGroup>);
+            }else{
+                return child;
             }
-            return child;
+
         }
     });
     return Pager;

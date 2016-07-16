@@ -5,16 +5,18 @@
 let wrapper = document.getElementById('container');
 let React = window.React = require('react');
 let ReactDOM = window.ReactDOM = require('react-dom');
+
 let Router = require('./router');
 let Pager=require('Pager').createPager({
     enableAnimation:true,
-    transition:'pager-slide',
-    enter:'pager-slide-enter',
-    reverseEnter:'pager-slide-reverse-enter',
-    leave:'pager-slide-leave',
-    reverseLeave:'pager-slide-reverse-leave',
+    css:{
+        transition:'pager-slide',
+        forward:'pager-slide',
+        backward:'pager-slide-reverse'
+    },
+    cssTransitionGroup:require('ReactCssTransitionGroup'),
     // removeActive:true,
-    duration:0.5
+    duration:425
 });
 let Page1 = require('./page1'),
     Page2 = require('./page2');

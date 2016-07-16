@@ -10,9 +10,10 @@ let Page2 = React.createClass({
         },
         render(){
             return (
-                <div className="no-flicker" style={{width:'100%',height:'100%',background:'grey'}}>
+                <div className="no-flicker pager-slide" style={{width:'100%',height:'100%',position:'absolute',top:'0',left:'0',background:'#efeff4'}}>
                     <button onClick={this.changePage}>page1</button>
                     page2
+                    <div style={{width:'80%',height:'50%',background:'blue'}}></div>
                 </div>
             )
         },
