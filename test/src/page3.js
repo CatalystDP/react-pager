@@ -11,7 +11,7 @@ let Page2 = React.createClass({
         render(){
             return (
                 <div className="no-flicker" style={{width:'100%',height:'100%',background:'#efeff4'}}>
-                    page2
+                    page3
                     <div style={{width:'80%',height:'50%',background:'green'}}></div>
                 </div>
             )
