@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" style="width: 100%;height: 100%;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <style>
+        * {
+            /*-webkit-tap-highlight-color: rgba(0, 0, 0, 0);*/
+        }
+
+        body {
+            /*-webkit-transform:translate3d(0,0,0);*/
+        }
+
+        .pager-slide {
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            -webkit-animation-duration: 300ms;
+            -webkit-animation-iteration-count: 1;
+            -webkit-animation-timing-function: linear;
+            -webkit-animation-fill-mode: forwards;
+        }
+        @-webkit-keyframes page-sfr-enter {
+            from {
+                -webkit-transform: translate3d(100%, 0, 0);
+            }
+            to {
+                -webkit-transform: translate3d(0, 0, 0);
+            }
+        }
+       @keyframes page-sfr-enter {
+
+        from {
+            transform: translate3d(100%, 0, 0);
+        }
+
+        to {
+            transform: translate3d(0, 0, 0);
+        }
+
+        }
+
+
+
+        @keyframes page-sfr-leave {
+            to {
+                opacity: .9;
+                transform: translate3d(-20%, 0, 0);
+            }
+        }
+
+        @-webkit-keyframes page-sfr-leave {
+            to {
+                opacity: .9;
+                -webkit-transform: translate3d(-20%, 0, 0);
+            }
+        }
+
+        @keyframes page-rfr-enter {
+            from {
+                opacity: .9;
+                transform: translate3d(-20%, 0, 0);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        @-webkit-keyframes page-rfr-enter {
+            from {
+                opacity: .9;
+                -webkit-transform: translate3d(-20%, 0, 0);
+            }
+            to {
+                opacity: 1;
+                -webkit-transform: translate3d(0, 0, 0);
+            }
+        }
+
+        @keyframes page-rfr-leave {
+            to {
+                opacity: 0.9;
+                transform: translate3d(100%, 0, 0);
+            }
+        }
+
+        @-webkit-keyframes page-rfr-leave {
+            to {
+                opacity: 0.9;
+                -webkit-transform: translate3d(100%, 0, 0);
+            }
+        }
+
+        .pager-slide-enter {
+            z-index: 20;
+            pointer-events: none;
+        }
+
+        .pager-slide-enter-active {
+
+            -webkit-animation-name: page-sfr-enter
+        }
+
+        .pager-slide-reverse-enter {
+            pointer-events: none;
+        }
+
+        .pager-slide-reverse-enter-active {
+            z-index:10;
+           -webkit-animation-name: page-rfr-enter
+        }
+
+        .pager-slide-leave {
+            z-index:10;
+            pointer-events: none;
+        }
+
+        .pager-slide-leave-active {
+          -webkit-animation-name: page-sfr-leave
+        }
+
+        .pager-slide-reverse-leave {
+            z-index: 20;
+            pointer-events: none;
+
+        }
+
+        .pager-slide-reverse-leave-active {
+            -webkit-animation-name: page-rfr-leave
+        }
+
+        /*.pager-slide-enter {*/
+        /*z-index: 1;*/
+        /*pointer-events: none;*/
+        /*-webkit-transform: translateX(100%);*/
+        /*transform: translateX(100%);*/
+        /*}*/
+        /*.pager-slide-enter-active {*/
+        /*z-index: 1;*/
+        /*-webkit-transform: translateX(0);*/
+        /*transform: translateX(0);*/
+        /*}*/
+        /*.pager-slide-reverse-enter{*/
+        /*pointer-events: none;*/
+        /*-webkit-transform:translateX(-20%);*/
+        /*transform:translateX(-20%);*/
+        /*}*/
+        /*.pager-slide-reverse-enter-active{*/
+        /*-webkit-transform:translateX(0) ;*/
+        /*transform:translateX(0);*/
+        /*}*/
+
+        /*.pager-slide-leave{*/
+        /*pointer-events: none;*/
+        /*-webkit-transform: translateX(0) ;*/
+        /*transform: translateX(0) ;*/
+        /*}*/
+        /*.pager-slide-leave-active{*/
+        /*-webkit-transform: translateX(-20%);*/
+        /*transform: translateX(-20%) ;*/
+        /*}*/
+        /*.pager-slide-reverse-leave{*/
+        /*pointer-events: none;*/
+        /*-webkit-transform: translateX(0);*/
+        /*transform: translateX(0);*/
+
+        /*}*/
+        /*.pager-slide-reverse-leave-active{*/
+        /*-webkit-transform: translateX(100%);*/
+        /*transform: translateX(100%);*/
+        /*}*/
+    </style>
+    <script>
+        var isWkWebView;
+        if (navigator.platform.substr(0, 2) === 'iP') {
+            //iOS (iPhone, iPod or iPad)
+            if (window.indexedDB) {
+                //WKWebView
+                isWkWebView = true;
+            }
+        }
+        console.log('is wkwebview ' + isWkWebView);
+    </script>
+</head>
+<body style="width: 100%;height: 100%;margin:0;">
+<section id="wrapper" style="width:100%;height:100%">
+    <button id="page1">page1</button>
+    <button id="page2">page2</button>
+    <div id="container" style="position: relative;width:100%;height: 94%;overflow: hidden"></div>
+</section>
+<script src="./dist/vendor.js"></script>
+<script type="text/javascript" src="./dist/app.js"></script>
+</body>
+</html>

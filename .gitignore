@@ -1,0 +1,4 @@
+dist/
+babel-cache/
+node_modules/
+.idea/
