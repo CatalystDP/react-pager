@@ -15,7 +15,7 @@ let Pager = require('Pager').createPager({
         backward: 'pager-slide-reverse'
     },
     cssTransitionGroup: require('ReactCssTransitionGroup'),
-    duration: 300
+    duration: 400
 });
 let Page1 = require('./page1'),
     Page2 = require('./page2');

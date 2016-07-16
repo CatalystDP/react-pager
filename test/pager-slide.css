@@ -72,6 +72,10 @@
 .pager-slide {
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
 }
 
 .pager-slide-enter-active {
@@ -83,8 +87,8 @@
     pointer-events: none;
 }
 .pager-slide-enter-active,.pager-slide-leave{
-    -webkit-animation-duration: .3s;
-    animation-duration: .3s;
+    -webkit-animation-duration: .4s;
+    animation-duration: .4s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1.0);
@@ -108,8 +112,8 @@
     pointer-events: none;
 }
 .pager-slide-reverse-enter-active,.pager-slide-reverse-leave{
-    -webkit-animation-duration: .3s;
-    animation-duration: .3s;
+    -webkit-animation-duration: .4s;
+    animation-duration: .4s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1.0);
