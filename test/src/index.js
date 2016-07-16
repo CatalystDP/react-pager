@@ -7,25 +7,24 @@ let React = window.React = require('react');
 let ReactDOM = window.ReactDOM = require('react-dom');
 
 let Router = require('./router');
-let Pager=require('Pager').createPager({
-    enableAnimation:true,
-    css:{
-        transition:'pager-slide',
-        forward:'pager-slide',
-        backward:'pager-slide-reverse'
+let Pager = require('Pager').createPager({
+    enableAnimation: true,
+    css: {
+        transition: 'pager-slide',
+        forward: 'pager-slide',
+        backward: 'pager-slide-reverse'
     },
-    cssTransitionGroup:require('ReactCssTransitionGroup'),
-    // removeActive:true,
-    duration:425
+    cssTransitionGroup: require('ReactCssTransitionGroup'),
+    duration: 400
 });
 let Page1 = require('./page1'),
     Page2 = require('./page2');
 function changePage(page, Child) {
     let child;
-    if(!Child){
-        child=null;
-    }else{
-        child=<Child/>;
+    if (!Child) {
+        child = null;
+    } else {
+        child = <Child/>;
     }
     if (!Child) return;
     ReactDOM.render(<Pager page={page} component={child}/>, wrapper);
@@ -33,9 +32,9 @@ function changePage(page, Child) {
 
 }
 
-Router.add('page1',(id,isOld,data)=>{
+Router.add('page1', (id, isOld, data)=> {
     changePage(id, Page1);
-}).add('page2',(id,isOld,data)=>{
+}).add('page2', (id, isOld, data)=> {
     changePage(id, Page2);
 });
 Router.go('page1');

@@ -34,6 +34,7 @@ let config = {
             'ReactTransitionGroup':'commonjs ReactTransitionGroup'
         }
     ],
+    plugins:[],
     module: {
         loaders: [
             {
