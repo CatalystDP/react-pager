@@ -64,17 +64,12 @@ config.plugins = [
         minChunks:Infinity
     })
 ];
-if (ENV.DEBUG) {
-    config.devtool = 'inline-source-map';
-} else {
-    config.plugins.push(
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: JSON.stringify('production')
-            }
-        }));
-    config.plugins.push(new webpack.optimize.UglifyJsPlugin({
-        mangle: true
+config.plugins.push(
+    new webpack.DefinePlugin({
+        'process.env': {
+            NODE_ENV: JSON.stringify('production')
+        }
     }));
-}
+config.devtool = 'inline-source-map';
+
 module.exports = config;

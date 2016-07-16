@@ -19,6 +19,7 @@ let Pager = require('Pager').createPager({
 });
 let Page1 = require('./page1'),
     Page2 = require('./page2');
+let Page3=require('./page3');
 function changePage(page, Child) {
     let child;
     if (!Child) {
@@ -36,13 +37,19 @@ Router.add('page1', (id, isOld, data)=> {
     changePage(id, Page1);
 }).add('page2', (id, isOld, data)=> {
     changePage(id, Page2);
+}).add('page3',(id,isOld,data)=>{
+    changePage(id,Page3);
 });
 Router.go('page1');
 let page1 = document.querySelector('#page1'),
-    page2 = document.querySelector('#page2');
+    page2 = document.querySelector('#page2'),
+    page3=document.querySelector('#page3');
 page1.onclick = function () {
     changePage('page1', Page1);
 };
 page2.onclick = function () {
     changePage('page2', Page2);
+};
+page3.onclick=function(){
+    changePage('page3',Page3);
 };
