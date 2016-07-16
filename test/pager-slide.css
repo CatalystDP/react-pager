@@ -83,10 +83,12 @@
     pointer-events: none;
 }
 .pager-slide-enter-active,.pager-slide-leave{
-    -webkit-animation-duration: .4s;
-    animation-duration: .4s;
+    -webkit-animation-duration: .3s;
+    animation-duration: .3s;
     -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards
+    animation-fill-mode: forwards;
+    -webkit-animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1.0);
+    animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1.0);
 }
 .pager-slide-enter-active{
     -webkit-animation-name: page-sfr-enter;
@@ -106,10 +108,12 @@
     pointer-events: none;
 }
 .pager-slide-reverse-enter-active,.pager-slide-reverse-leave{
-    -webkit-animation-duration: .4s;
-    animation-duration: .4s;
+    -webkit-animation-duration: .3s;
+    animation-duration: .3s;
     -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards
+    animation-fill-mode: forwards;
+    -webkit-animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1.0);
+    animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1.0);
 }
 .pager-slide-reverse-enter-active{
     -webkit-animation-name: page-rfr-enter;
