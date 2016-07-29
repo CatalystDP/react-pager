@@ -70,6 +70,14 @@ config.plugins.push(
             NODE_ENV: JSON.stringify('production')
         }
     }));
-config.devtool = 'inline-source-map';
+if(!ENV.DEBUG){
+    config.plugins.push(new webpack.optimize.UglifyJsPlugin({
+        mangle: true,
+        minimize:true
+    }));
+}else{
+    config.devtool = 'inline-source-map';
+}
+
 
 module.exports = config;
