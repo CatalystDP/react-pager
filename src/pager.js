@@ -138,7 +138,7 @@ function createPager(opts = {}) {
             return {page: null, component: null};
         },
         componentDidMount(){
-            this._changePage(this.state.page || this.props.page);
+            this._changePage(this.props.page);
         },
         shouldComponentUpdate(nextProps, nextState){
             return this._changePage(nextState.page || nextProps.page);
@@ -167,7 +167,7 @@ function createPager(opts = {}) {
             return true;
         },
         render(){
-            let Component = this.state.component || this.props.component;
+            let Component = this.props.component;
             let style = {
                 width: '100%',
                 height: '100%',
@@ -178,7 +178,7 @@ function createPager(opts = {}) {
             if (this.props.style) {
                 util.extend(style, this.props.style);
             }
-            let child = <Container key={this.state.page||this.props.page} page={this.state.page||this.props.page}
+            let child = <Container key={this.props.page} page={this.props.page}
                                    style={style} className={opts.css.transition||''}>
                 {Component}
             </Container>;
