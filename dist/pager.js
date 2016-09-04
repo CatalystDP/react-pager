@@ -169,7 +169,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function createPager() {
 	    var opts = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 
-	    if (opts.animation && !opts.transitionGroup) {
+	    if (opts.animation && !(opts.transitionGroup || opts.cssTransitionGroup)) {
 	        throw new PagerError('you should provide ReactTransitionGroup to transitionGroup option');
 	    }
 	    var TransitionGroup = opts.transitionGroup;
@@ -177,7 +177,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var css = opts.css || {};
 	    var animationObj = opts.animation || {};
 	    var duration = typeof opts.duration != 'undefined' ? opts.duration : 300;
-	    var direction = 0;
+	    var direction = DIRECTION.INIT;
+	    var lockTarget = opts.lockTarget || document.getElementsByTagName('body')[0]; //默认锁body元素
 	    var Container = React.createClass({
 	        displayName: 'Container',
 
@@ -252,7 +253,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                //新的出现
 	                direction = DIRECTION.TONEW;
 	                if (this.stack.length <= 1) {
-	                    direction = 0;
+	                    direction = DIRECTION.INIT;
 	                }
 	            }
 	            return true;
@@ -305,6 +306,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	        }
 	    });
+	    Pager.lock = function () {
+	        if (direction == DIRECTION.INIT) {
+	            Pager.unlock();
+	            return;
+	        }
+	        lockTarget.style.pointerEvents = 'none';
+	    };
+	    Pager.unlock = function () {
+	        lockTarget.style.pointerEvents = 'auto';
+	    };
 	    return Pager;
 	}
 

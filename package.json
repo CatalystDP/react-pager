@@ -1,12 +1,12 @@
 {
   "name": "react-pager",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "基于React页面切换库",
+  "main": "dist/pager.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "CatalystDP",
   "license": "ISC",
   "dependencies": {
     "react": "^15.2.1",

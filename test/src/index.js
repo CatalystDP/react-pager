@@ -7,12 +7,27 @@ let React = window.React = require('react');
 let ReactDOM = window.ReactDOM = require('react-dom');
 
 let Router = require('./router');
+const lock=(el,direction)=>{
+    if(direction==require('Pager').DIRECTION.INIT) return;
+    document.body.style.pointerEvents='none';
+};
+const unlock=()=>{
+    document.body.style.pointerEvents='';
+};
 let Pager = require('Pager').createPager({
     enableAnimation: true,
     css: {
         transition: 'pager-slide',
         forward: 'pager-slide',
         backward: 'pager-slide-reverse'
+    },
+    animation:{
+        beforeEnter:(el,direction)=>{
+            Pager.lock();
+        },
+        afterLeave:()=>{
+            Pager.unlock();
+        }
     },
     cssTransitionGroup: require('ReactCssTransitionGroup'),
     duration: 400
@@ -28,6 +43,7 @@ function changePage(page, Child) {
         child = <Child/>;
     }
     if (!Child) return;
+    // ReactDOM.unmountComponentAtNode(wrapper);
     ReactDOM.render(<Pager page={page} component={child}/>, wrapper);
     Child = null;
 

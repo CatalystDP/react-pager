@@ -87,7 +87,7 @@ class PagerError extends Error {
  * @returns {*}
  */
 function createPager(opts = {}) {
-    if (opts.animation && !opts.transitionGroup) {
+    if (opts.animation && !(opts.transitionGroup||opts.cssTransitionGroup)) {
         throw new PagerError('you should provide ReactTransitionGroup to transitionGroup option');
     }
     let TransitionGroup = opts.transitionGroup;
@@ -95,7 +95,8 @@ function createPager(opts = {}) {
     let css = opts.css || {};
     let animationObj = opts.animation || {};
     let duration = typeof opts.duration != 'undefined' ? opts.duration : 300;
-    let direction = 0;
+    let direction = DIRECTION.INIT;
+    let lockTarget=opts.lockTarget||document.getElementsByTagName('body')[0];//默认锁body元素
     let Container = React.createClass({
         name: 'Container',
         componentWillMount(){
@@ -161,7 +162,7 @@ function createPager(opts = {}) {
                 //新的出现
                 direction = DIRECTION.TONEW;
                 if (this.stack.length <= 1) {
-                    direction = 0;
+                    direction = DIRECTION.INIT;
                 }
             }
             return true;
@@ -209,6 +210,16 @@ function createPager(opts = {}) {
 
         }
     });
+    Pager.lock=()=>{
+        if(direction==DIRECTION.INIT){
+            Pager.unlock();
+            return;
+        }
+        lockTarget.style.pointerEvents='none';
+    };
+    Pager.unlock=()=>{
+        lockTarget.style.pointerEvents='auto';
+    };
     return Pager;
 }
 
