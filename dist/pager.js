@@ -148,7 +148,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 *
 	 * @param opts
-	 *      @param [opts.animation]
+	 *      @param [opts.animation] 当enableAnimation=true并且传入了transitionGroup有效
 	 *             @param [opts.animation.beforeEnter(el,direction,page)]
 	 *             @param [opts.animation.enter(el,direction,callback,page)]动画结束后要调用callback
 	 *             @param [opts.animation.afterenter(el,direction,page)]
@@ -156,11 +156,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *             @param [opts.animation.leave(el,direction,callback,page)]动画结束后要调用callback
 	 *             @param [opts.animation.afterLeave(el,direction,page)]
 	 *      @param [opts.enableAnimation] true表示使用动画
-	 *      **** enableAnimation=true 情况下传 ****
-	 *      @param [opts.transition] 包含transition的类名
-	 *      @param opts.enter 页面进入的类名 需要实现 .xxx-enter .xxx-enter-active 类
+	 *      **** enableAnimation=true && 传入了cssTransitionGroup 情况下传 ****
+	 *      @param css css类名对象
+	 *             [css.transition] 用来执行过渡的类名可以放入transision必需的css属性
+	 *             css.forward 正向css类名 需要实现类名 xxx-enter xxx-enter-active xxx-leave xxx-leave-active
+	 *             css.backward 反向css类名 名称规则同css.forward
+	 *      @param duration 动画持续时间 单位 ms
 	 *      ****************************************
-	 * @description 当传入animation之后其余的传入的css class名称都不会生效
+	 * @description 
 	 *              动画钩子内的direction是用来判断页面切换的方向的 TOOLD表示老的页面要出来了 TONEW表示新页面要进来，INIT 表示初始化
 	 * @returns {*}
 	 */
