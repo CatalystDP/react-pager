@@ -1,6 +1,6 @@
 {
   "name": "react-page-switch",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "基于React页面切换库",
   "main": "dist/pager.min.js",
   "scripts": {

@@ -90,9 +90,6 @@ class PagerError extends Error {
  * @returns {*}
  */
 function createPager(opts = {}) {
-    if (opts.animation && !(opts.transitionGroup||opts.cssTransitionGroup)) {
-        throw new PagerError('you should provide ReactTransitionGroup to transitionGroup option');
-    }
     let TransitionGroup = opts.transitionGroup;
     let CssTransitionGroup = opts.cssTransitionGroup;
     let css = opts.css || {};
@@ -183,7 +180,7 @@ function createPager(opts = {}) {
                 util.extend(style, this.props.style);
             }
             let child = <Container key={this.props.page} page={this.props.page}
-                                   style={style} className={opts.css.transition||''}>
+                                   style={style} className={css.transition||''}>
                 {Component}
             </Container>;
             if (opts.enableAnimation) {
