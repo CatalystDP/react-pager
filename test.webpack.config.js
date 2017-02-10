@@ -29,6 +29,7 @@ let config = {
             path.join(REACTLIB,'ReactCssTransitionGroup.js')
         ]
     },
+    watch:ENV.DEBUG,
     output: {
         path: './test/dist',
         filename: '[name].js',
@@ -40,7 +41,7 @@ let config = {
             'react-dom':REACTDOM,
             'ReactTransitionGroup':path.join(REACTLIB,'ReactTransitionGroup.js'),
             'ReactCssTransitionGroup':path.join(REACTLIB,'ReactCssTransitionGroup.js'),
-            'Pager':path.join(process.cwd(),'dist/pager.js')
+            'Pager':path.join(process.cwd(),'src/pager.js')
         }
     },
     module: {

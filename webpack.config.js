@@ -18,6 +18,7 @@ if (!ENV.DEBUG) {
 
 let config = {
     entry: {
+        // navigation:path.join(JSPATH,'navigation.js'),
         pager: path.join(JSPATH, 'pager.js'),
         'pager.min':path.join(JSPATH,'pager.js')
     },
@@ -35,6 +36,7 @@ let config = {
             'ReactTransitionGroup':'ReactTransitionGroup'
         }
     ],
+    watch:ENV.DEBUG,
     plugins:[],
     module: {
         loaders: [

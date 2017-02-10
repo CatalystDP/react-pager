@@ -4,7 +4,9 @@
   "description": "基于React页面切换库",
   "main": "dist/pager.min.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "component-debug":"webpack --display-modules --debug",
+    "test-debug":"webpack --config test.webpack.config.js --display-modules --debug"
   },
   "author": "CatalystDP",
   "license": "ISC",
