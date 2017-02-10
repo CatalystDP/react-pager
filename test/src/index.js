@@ -69,7 +69,7 @@ page2.onclick = function () {
 page3.onclick = function () {
 
 };
-let navigation = ReactDOM.render(<Pager enableAnimation={true} onBeforeAnimation={function (curNode, nextNode,direction) {
+let navigation = ReactDOM.render(<Pager enableAnimation={true} onBeforeAnimation={function (curNode, nextNode, direction) {
     if (this.direction == Pager.DIRECTION.TONEW) {
         nextNode.style.transform = `translateX(100%) translateZ(0)`;
     } else if (this.direction == Pager.DIRECTION.TOOLD) {
@@ -77,11 +77,22 @@ let navigation = ReactDOM.render(<Pager enableAnimation={true} onBeforeAnimation
     }
 } } onAnimate={function (cur, next, done, direction) {
     if (direction == Pager.DIRECTION.INIT) done();
+    var count = 0;
     this.animate(next, {
-        transform:`translateX(0) translateZ(0)`
+        transform: `translateX(0) translateZ(0)`
     }, 1, () => {
-
-        done();
+        ++count;
+        if (count >= 2) {
+            done();
+        }
+    });
+    this.animate(cur, {
+        transform: `translateX(-100%) translateZ(0)`
+    }, 1, () => {
+        ++count;
+        if (count >= 2) {
+            done();
+        }
     });
 } } wrapStyle={{
     position: 'absolute',
